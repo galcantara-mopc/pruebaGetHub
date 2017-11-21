@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
                 Telefono = Tel
             };
 
+            DataSet1 ds = new DataSet1();
             List<Persona> lisp = new List<Persona>();
             lisp.Add(pers);
 
