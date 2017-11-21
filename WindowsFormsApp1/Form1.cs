@@ -17,39 +17,43 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            CrystalReport1 repo = new CrystalReport1();
-            repo.Load("CrystalReport.rpt");
-
-            var Tel = new Telefono()
+            var per = new Persona()
             {
-                Numero="8096991656"
+                Cedula = "402",
+                Nombre = "g",
+                Apellidos="a"
+            };
+            var tel = new Telefono()
+            {
+                Tipo="Casa",
+                Numero = "8096991656"
+            };
+            var tel1 = new Telefono()
+            {
+                Tipo = "tabajo",
+                Numero = "8096991656"
+            };
+            var tel3 = new Telefono()
+            {
+                Tipo = "movil",
+                Numero = "8096991656"
             };
 
-            List<Telefono> lis = new List<Telefono>();
-            lis.Add(Tel);
+            var list = new List<Telefono>();
+            list.Add(tel);
+            list.Add(tel1);
+            list.Add(tel3);
+            var lisp = new List<Persona>();
+            lisp.Add(per);
+            CrystalReport1 rep = new CrystalReport1();
 
-            var pers = new Persona()
-            {
-                Nombre = "Geordano",
-                Apellidos = "Alcantara",
-                Telefono = Tel
-            };
-
-            DataSet1 ds = new DataSet1();
-            List<Persona> lisp = new List<Persona>();
-            lisp.Add(pers);
-
-            crystalReportViewer1.ReportSource = repo;
-            repo.SetDataSource (lisp);
-
-
+            rep.SetDataSource(list);
+            rep.SetParameterValue("Nombre", per.Nombre);
+            rep.SetParameterValue("Cedula", per.Cedula);
+            crystalReportViewer1.ReportSource = rep;
+            
         }
     }
 }

@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Telefono
     {
-        public string Cedula { get; set; }
+        public string Tipo { get; set; }
         public string Numero { get; set; }
     }
 }
